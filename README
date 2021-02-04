@@ -1,0 +1,23 @@
+# This is a terminal app that will scrape Craigslist
+# and send an email with the results. This app uses
+# argparse and requires a minimum of three commandline
+# arguments.
+#
+# Example:
+# $ python3 dealscraper.py free-stuff -u 'https://westernmass.craigslist.org/search/zip?hasPic=1'
+#
+# The first argument is a short name for the results 
+# message and database. Second argument is an email 
+# address to send results to. For the third argument 
+# at least one craigslist url must be entered. For best results
+# I suggest applying filters on the Craigslist page so that url
+# contains the most accurate search criteria. Each 
+# url must be flagged -u and be in single quotes following a whitespace
+#
+# Example:
+# -u 'http://*/*'
+#
+# An example of when i would use multiple url's is if I was 
+# looking for a clothes washing machine and dryer. I'd use one url to
+# search for "washing machine", another to search "dryer", and
+# a third url to search "washer and dryer"
