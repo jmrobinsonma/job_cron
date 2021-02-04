@@ -70,8 +70,10 @@ class DealScraper:
 		self.EMAIL_PASSWORD = ""
 
 # USE IF/ELSE CONDITIONALS IN THIS FUNCTION TO DEFINE PERSONALIZED 
-# SEARCH CRITERIA, SCRAPE, AND POPULATE RESULT LISTS
+# SEARCH CRITERIA, REDUCE SPAM, SCRAPE, AND POPULATE RESULT LISTS.  
+
 	def get_results(self):
+		SPAM = "DoorDash"
 		try:
 			for url in self.urls:
 				response = get(url)
@@ -81,10 +83,11 @@ class DealScraper:
 				for post in posts:
 					post_title = post.find('a',class_='result-title hdrlnk')
 					post_link = post_title['href']
-					# SELECT A REGION HERE TO REFINE RESULTS
+					# SELECT A REGION AND CUT SPAM HERE TO REFINE RESULTS
 					region = bool(post_link.split('/')[2].split('.')[0]=='westernmass')
-
-					if region:
+					not_spam = bool(SPAM not in post_title.text)
+					
+					if region and not_spam :
 						self.num_posts += 1
 
 						post_title_text = post_title.text
